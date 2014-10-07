@@ -1,6 +1,23 @@
 
 var app = angular.module('app',[]);
 
+
+
+
+angular.module('app').directive('ngEnter', function() {
+        return function(scope, element, attrs) {
+            element.bind("keydown keypress", function(event) {
+                if(event.which === 13) {
+                    scope.$apply(function(){
+                        scope.$eval(attrs.ngEnter, {'event': event});
+                    });
+
+                    event.preventDefault();
+                }
+            });
+        };
+    });
+
 app.controller('BodyCtrl',['$scope',
   function($scope){
 
@@ -13,16 +30,18 @@ app.controller('BodyCtrl',['$scope',
       }
     };
 
-
     var checkValidation =function(){
-      //if(document.getElementById("search").value.length === 0 ){
-      if($scope.searchString.length === 0){
+    if(document.getElementById("search").value.length === 0 ){
+       // var len = ($scope.message).length;
+
+      //console.log("Length is " + len);
+     // if( len === 0){
         alert("Please Enter the Search String");
         return false;
       }
 
       return true;
-    }
+    };
 
     
     var readTextFile = function(){
@@ -30,7 +49,12 @@ app.controller('BodyCtrl',['$scope',
       var file = "strings.txt";
       rawFile.open("GET",file,false);
 
-      var search = document.getElementById("search").value.trim();
+      //var search = document.getElementById("search").value.trim();
+      var search = ($scope.message + '').trim();
+
+      console.log('Search is ' + search.length);
+
+      if(search.length != 0){
       var re = new RegExp(search,'gi');
       var result ;
 
@@ -59,6 +83,8 @@ app.controller('BodyCtrl',['$scope',
 
      
    }
+
+ }
 
    rawFile.send(null);
  }

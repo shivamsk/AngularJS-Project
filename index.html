@@ -16,8 +16,12 @@
 </head>
 
 <body ng-controller = "BodyCtrl">
-    <input type ="text" ng-model = "searchString" id="search" maxlength="512" placeholder = "Enter the Search String" />
+    <input ng-model = "message" type ="text"  id="search" maxlength="512" placeholder = "Enter the Search String" />
+
    <input type ="submit" id="submit" ng-click = "submit()"  value="Search"  />
+
+  <!--<input type ="submit" id="submit" ngEnter ="submit()" value="Search"  /> -->
+
 
 
     <p id="print" ng-bind-html-unsafe = "printMessage">     </p>
