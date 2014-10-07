@@ -4,12 +4,9 @@ var app = angular.module('app',[]);
 app.controller('BodyCtrl',['$scope',
   function($scope){
 
-    $scope.clear = function(){
-      $scope.searchString = "";
-    };
-
     $scope.submit = function(){
-      document.getElementById("print").innerHTML="";
+      //document.getElementById("print").innerHTML=""; 
+      $scope.printMessage = "";
 
       if(checkValidation() === true  ){
         readTextFile();
@@ -18,7 +15,8 @@ app.controller('BodyCtrl',['$scope',
 
 
     var checkValidation =function(){
-      if(document.getElementById("search").value.length === 0 ){
+      //if(document.getElementById("search").value.length === 0 ){
+      if($scope.searchString.length === 0){
         alert("Please Enter the Search String");
         return false;
       }
@@ -48,7 +46,8 @@ app.controller('BodyCtrl',['$scope',
 
             console.log(result);
             if(result != null){
-             document.getElementById("print").innerHTML += lines[i] + "<br>";
+             //document.getElementById("print").innerHTML += lines[i] + "<br>";
+             $scope.printMessage += lines[i] + "<br>";
            }
 
 
