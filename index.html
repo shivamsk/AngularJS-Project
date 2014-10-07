@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<!-- Source :
+
+  http://stackoverflow.com/questions/24042342/read-local-text-file-using-javascript?rq=1
+
+  http://stackoverflow.com/questions/14446447/javascript-read-local-text-file
+
+-->
+<head>
+   <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js" ></script>
+   <!--<script type="text/javascript" src="indexJS.js"></script>-->
+   <script src = "angularJS.js" > </script>
+   <!--<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> -->
+</head>
+
+<body ng-controller = "BodyCtrl">
+    <input type ="text" ng-model = "searchString" id="search" maxlength="512" placeholder = "Enter the Search String" />
+   <input type ="submit" id="submit" ng-click = "submit()"  value="Search"  />
+
+
+    <p id="print" ></p>
+
+   
+</body>
+
+</html>  
